@@ -22,12 +22,10 @@ public class Record {
 	}
 	
 	public String toString() {
-		
-		String fileNumberString = Helper.padZerotoInt(this.fileNumber, 2);
 		String recordNumberString = Helper.padZerotoInt(this.recordNumber, 3);
 		
-		String identifierString = dataset.toString() + fileNumberString + "-" + "Rec" + recordNumberString;
-		String nameString = this.name + recordNumberString;
+		String identifierString = this.getIdentifierString();
+		String nameString = this.getNameString();
 		String addressString = this.address + recordNumberString;
 		String randomValueString = Helper.padZerotoInt(this.randomV, 4);
 		
@@ -37,5 +35,15 @@ public class Record {
 	
 	public int getRandomValue() { return this.randomV; }
 	
+	public String getIdentifierString() {
+		String fileNumberString = Helper.padZerotoInt(this.fileNumber, 2);
+		String recordNumberString = Helper.padZerotoInt(this.recordNumber, 3);
+		
+		return dataset.toString() + fileNumberString + "-" + "Rec" + recordNumberString;
+	}
+	public String getNameString() {
+		String recordNumberString = Helper.padZerotoInt(this.recordNumber, 3);
+		return this.name + recordNumberString;
+	}
 	
 }

@@ -8,10 +8,11 @@ public class Main {
 
 	public static void main(String[] args) {
 	
-		DataFileReader reader = new DataFileReader(Dataset.A, 32);
-		
-		Record record = reader.getRecord(99);
+		Query.performHashJoin();
 	
+		Query.performBlockLevelNestedLoopJoin();
+		
+		Query.performHashBasedAggregationFunction(Dataset.A,AggregationFunctionType.SUM_RANDOMV);
 	}
 
 }

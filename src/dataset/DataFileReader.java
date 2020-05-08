@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 
 import data.Record;
+import hash.Bucket;
 
 public class DataFileReader {
 
@@ -56,6 +57,18 @@ public class DataFileReader {
 		Record record = new Record(dataset, fileNumber, recordNumber, name, address, randomV);
 
 		return record;
+	}
+	
+	
+	public Bucket getAllRecords() {
+		Bucket bucket = new Bucket();
+		
+		for(int x = 1; x <= dataset.getRecordsPerFile(); x++) {
+			Record record = getRecord(x);
+			bucket.add(record);
+		}
+		
+		return bucket;
 	}
 
 	/*
